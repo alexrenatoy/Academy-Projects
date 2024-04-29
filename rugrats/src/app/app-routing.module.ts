@@ -17,7 +17,8 @@ const routes: Routes = [
   {
     path: "**",
     redirectTo:"/common/not-found"
-  }
+  },
+  
 ];
 
 @NgModule({
