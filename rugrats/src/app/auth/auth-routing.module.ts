@@ -7,6 +7,10 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent
   },
+  {
+    path: "employees",
+    loadChildren:() => import('./employees/employees.module').then(m => m.EmployeesModule)
+  },
 ];
 
 @NgModule({
