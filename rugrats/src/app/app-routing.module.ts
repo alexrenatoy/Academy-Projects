@@ -7,6 +7,14 @@ const routes: Routes = [
     loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: "compra",
+    loadChildren:() => import('./compra/compra.module').then(m => m.CompraModule)
+  },
+  {
+    path: "suppliers",
+    loadChildren:() => import('./suppliers/suppliers.module').then(m => m.SuppliersModule)
+  },
+  {
     path: "common",
     loadChildren:() => import('./common/common.module').then(m => m.CommonModule)
   },
