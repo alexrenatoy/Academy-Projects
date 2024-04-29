@@ -1,0 +1,19 @@
+<div class="carrito-container">
+  <h2>Carrito de Compras</h2>
+  <div *ngIf="productosEnCarrito.length === 0">
+    <p>No hay productos en el carrito.</p>
+  </div>
+  <div *ngFor="let producto of productosEnCarrito">
+    <div class="producto-en-carrito">
+      <img [src]="producto.imagen" alt="Producto">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion }}</p>
+      <button (click)="eliminarDelCarrito(producto)">Eliminar del Carrito</button>
+    </div>
+  </div>
+  <div *ngIf="productosEnCarrito.length > 0">
+    <button (click)="realizarPago()">Realizar Pago</button>
+  </div>
+</div>
+
+<a routerLink="/compra/productos">Volver a productos</a>
