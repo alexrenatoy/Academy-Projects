@@ -1,1 +1,11 @@
-<p>category-list works!</p>
+<div class="crema-promocionales-list">
+    <h2>Artículos Promocionales Crema</h2>
+  
+    <div class="promocional-item" *ngFor="let articulo of articulosPromocionales">
+      <img src="{{ articulo.imagen }}" alt="{{ articulo.nombre }}">
+      <h3>{{ articulo.nombre }}</h3>
+      <p class="precio-anterior"><s>S/. {{ articulo.precio }}</s></p>
+      <p class="precio-actual">S/. {{ articulo.precioDescuento }}</p>
+      <p class="porcentaje-descuento">{{ articulo.porcentajeDescuento }}% de descuento</p>
+    </div>
+  </div>

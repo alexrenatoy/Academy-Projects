@@ -1,0 +1,38 @@
+/* src/app/components/crema-promocionales-list.component.css */
+
+.crema-promocionales-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .promocional-item {
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .promocional-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .precio-anterior {
+    text-decoration: line-through;
+    color: #999;
+    margin-bottom: 5px;
+  }
+  
+  .precio-actual {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .porcentaje-descuento {
+    color: #f00;
+  }
+  
