@@ -5,12 +5,12 @@ import { CategoryListComponent } from './category-list/category-list.component';
 
 const routes: Routes = [
   {
-    path:'offer-form',
-    component: CategoryFormComponent
+    path:'Offer-form',
+    component:CategoryFormComponent
   },
   {
     path:'offer-list',
-    component: CategoryListComponent
+    component:CategoryListComponent 
   }
 ];
 

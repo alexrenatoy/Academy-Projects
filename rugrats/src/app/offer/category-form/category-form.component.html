@@ -1,30 +1,37 @@
-<div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Offer Registration Form</h1>
-        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="offerName">Offer Name:</label>
-            <input type="text" class="form-control" id="offerName" formControlName="offerName" placeholder="Enter offer name">
-          </div>
-          <div class="form-group">
-            <label for="offerDescription">Offer Description:</label>
-            <textarea class="form-control" id="offerDescription" formControlName="offerDescription" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="offerPrice">Offer Price:</label>
-            <input type="number" class="form-control" id="offerPrice" formControlName="offerPrice" placeholder="Enter offer price">
-          </div>
-          <div class="form-group">
-            <label for="offerStartDate">Offer Start Date:</label>
-            <input type="date" class="form-control" id="offerStartDate" formControlName="offerStartDate">
-          </div>
-          <div class="form-group">
-            <label for="offerEndDate">Offer End Date:</label>
-            <input type="date" class="form-control" id="offerEndDate" formControlName="offerEndDate">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+<div>
+    <h2>Formulario de Ofertas de Ropa</h2>
+    <form>
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
       </div>
-    </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+      </div>
+      <div>
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria" required>
+          <option value="">Seleccionar</option>
+          <option value="hombres">Hombres</option>
+          <option value="mujeres">Mujeres</option>
+          <option value="niños">Niños</option>
+        </select>
+      </div>
+      <div>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" min="0" required>
+      </div>
+      <div>
+        <label for="descuento">Descuento:</label>
+        <input type="number" id="descuento" name="descuento" min="0" max="100" required>
+        <span>%</span>
+      </div>
+      <div>
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required>
+      </div>
+      <button type="submit">Agregar Oferta</button>
+    </form>
   </div>
+  
