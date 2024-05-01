@@ -2,20 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OfferRoutingModule } from './offer-routing.module';
-import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 @NgModule({
   declarations: [
-    CategoryListComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    CategoryListComponent
   ],
   imports: [
     CommonModule,
-    OfferRoutingModule,
-    ReactiveFormsModule
+    OfferRoutingModule
   ]
 })
 export class OfferModule { }
