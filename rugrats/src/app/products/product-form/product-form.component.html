@@ -1,15 +1,16 @@
-<form style="width: 500px; margin-left: 550px; margin-top: 30px; border: black 1px solid; padding: 20px; border-radius: 25px;">
+<form [formGroup]="form"
+style="width: 500px; margin-left: 550px; margin-top: 30px; border: black 1px solid; padding: 20px; border-radius: 25px;">
     <h2>Formulario del Producto</h2>
     <div class="mb-3">
-      <label for="exampleInputtext1" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="exampleInputtext1">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
     </div>
     <div class="mb-3">
-      <label for="exampleInputtext1" class="form-label">Imagen</label>
-      <input type="image" class="form-control" id="exampleInputtext1">
+      <label for="date" class="form-label">Fecha Recepcion</label>
+      <input type="date" class="form-control" id="date" formControlName="date">
     </div>
     <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Categoria</label>
+        <label for="selector" class="form-label">Categoria</label>
         <select class="form-select" aria-label="Default select example">
             <option selected>Escoge una...</option>
             <option value="1">Blusas</option>
@@ -18,20 +19,21 @@
           </select> 
       </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Talla</label>
-      <input type="text" class="form-control" id="exampleInputtext1">
+      <label for="description" class="form-label">Descripcion</label>
+      <input type="text" class="form-control" id="description" formControlName="description">
     </div>
     <div class="mb-3">
-        <label for="exampleInputtext1" class="form-label">Color</label>
-        <input type="text" class="form-control" id="exampleInputtext1">
+        <label for="color" class="form-label">Color</label>
+        <input type="text" class="form-control" id="color" formControlName="color">
       </div>
       
       <div class="mb-3">
-        <label for="exampleInputtext1" class="form-label">Precio</label>
-        <input type="number" class="form-control" id="exampleInputtext1">
+        <label for="price" class="form-label">Precio</label>
+        <input type="number" class="form-control" id="price" formControlName="price">
       </div>
+
     <div style="margin-left: 150px;">
-    <button type="submit" class="btn btn-outline-info" >Guardar</button>
+    <button type="submit" class="btn btn-outline-info" (click)="validateForm()">Validar</button>
     <button type="submit" class="btn btn-outline-danger" style="margin-left: 20px;">Eliminar</button>
     </div>
 </form>
