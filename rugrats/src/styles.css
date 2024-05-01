@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 .background {
     background-image: url('./assets/fondoo.jpg');
-    background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center; 
+    height: 100vh;
 }
