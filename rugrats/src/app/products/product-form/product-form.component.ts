@@ -19,8 +19,8 @@ export class ProductFormComponent {
           return this.formBuilder.group({
             name: ['Blusa', Validators.required],
             date: 12/2023,
-            description: '',
-            color:['Blanco', Validators.required],
+            description:['', Validators.required, Validators.minLength(30)],
+            color:['Blanco', Validators.required, Validators.maxLength(10)],
             price: [150.98, Validators.required]
           });
         }
