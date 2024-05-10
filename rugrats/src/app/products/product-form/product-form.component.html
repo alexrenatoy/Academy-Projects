@@ -1,40 +1,88 @@
-<form [formGroup]="form"
-style="width: 500px; margin-left: 550px; margin-top: 30px; border: black 1px solid; padding: 20px; border-radius: 25px;">
-    <h2>Formulario del Producto</h2>
-    <div class="mb-3">
-      <label for="name" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="name" formControlName="name">
-    </div>
-    <div class="mb-3">
-      <label for="date" class="form-label">Fecha Recepcion</label>
-      <input type="date" class="form-control" id="date" formControlName="date">
-    </div>
-    <div class="mb-3">
-        <label for="selector" class="form-label">Categoria</label>
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Escoge una...</option>
-            <option value="1">Blusas</option>
-            <option value="2">Pantalones</option>
-            <option value="3">Chaqueta</option>
-          </select> 
-      </div>
-    <div class="mb-3">
-      <label for="description" class="form-label">Descripcion</label>
-      <input type="text" class="form-control" id="description" formControlName="description">
-    </div>
-    <div class="mb-3">
-        <label for="color" class="form-label">Color</label>
-        <input type="text" class="form-control" id="color" formControlName="color">
-      </div>
-      
-      <div class="mb-3">
-        <label for="price" class="form-label">Precio</label>
-        <input type="number" class="form-control" id="price" formControlName="price">
-      </div>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+>
 
-    <div style="margin-left: 150px;">
-    <button type="submit" class="btn btn-outline-info" (click)="validateForm()">Validar</button>
-    <button type="submit" class="btn btn-outline-danger" style="margin-left: 20px;">Eliminar</button>
+
+
+<form [formGroup]="form" class="column is-half is-mobile">
+  <div class="field">
+    <label class="label">Nombre</label>
+    <div class="control">
+      <input class="input is-rounded bi bi-pen" type="text" placeholder="Ingresa el nombre de la prenda" formControlName = 'name'>
     </div>
+  </div>
+  <label class="label">Imagen</label>
+  <div class="file has-name">
+    <label class="file-label">
+      <input class="file-input" type="file" name="resume" />
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">Subir imagen </span>
+      </span>
+      <span class="file-name">Nombre Imagen</span>
+    </label>
+  </div>
+  <div class="field">
+    <label class="label">Descripcion</label>
+    <div class="control">
+      <input class="input is-rounded" type="text" placeholder="Escribe una descripcion" formControlName = 'description'>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input class="input is-rounded" type="text" placeholder="Ingresa el color de la prenda" formControlName = 'color'>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input class="input is-rounded" type="number" placeholder="Ingresa el color de la prenda" formControlName = 'price'>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Fecha de Envio</label>
+    <div class="control">
+      <input class="input is-rounded" type="date" placeholder="Escribe una descripcion" formControlName = 'date'>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Categoria</label>
+    <div class="control">
+      <div class="select is-rounded">
+        <select>
+          <option>Elige uno...</option>
+          <option>Pantalones</option>
+          <option>Blusas</option>
+          <option>Chaquetas</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Esta disponible?</label>
+    <div class="control">
+      <label class="radio">
+        <input type="radio" name="question" formControlName = 'availability'>
+        Si
+      </label>
+      <label class="radio">
+        <input type="radio" name="question">
+        No
+      </label>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-info is-dark">Guardar</button>
+    </div>
+    <div class="control">
+      <button class="button is-danger is-dark">Cancelar</button>
+    </div>
+  </div>
 </form>
-

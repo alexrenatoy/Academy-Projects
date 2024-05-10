@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
@@ -17,13 +17,41 @@ export class ProductFormComponent {
     }
         get builForm(): FormGroup{
           return this.formBuilder.group({
-            name: ['Blusa', Validators.required],
-            date: 12/2023,
+            name: ['', Validators.required],
+            date: [new Date(), [Validators.required]],
             description:['', Validators.required, Validators.minLength(30)],
-            color:['Blanco', Validators.required, Validators.maxLength(10)],
-            price: [150.98, Validators.required]
+            color:['', Validators.required, Validators.maxLength(10)],
+            price: [0, Validators.required],
+            availability: [false]
           });
         }
+
+        get name(): AbstractControl{
+          return this.form.controls['name']
+        }
+
+        get date(): AbstractControl{
+          return this.form.controls['date']
+        }
+
+        get description(): AbstractControl{
+          return this.form.controls['description']
+        }
+
+        get color(): AbstractControl{
+          return this.form.controls['color']
+        }
+
+        get price(): AbstractControl{
+          return this.form.controls['price']
+        }
+
+        get availability(): AbstractControl{
+          return this.form.controls['availability']
+        }
+        
+
+        
 
     validateForm(){
       if(this.form.valid){
@@ -33,4 +61,5 @@ export class ProductFormComponent {
         alert('no valido');
       }
     }
+    
 }
