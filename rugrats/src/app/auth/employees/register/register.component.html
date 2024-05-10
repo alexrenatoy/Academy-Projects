@@ -2,15 +2,16 @@
   <div class="border border-dark-subtle p-4 rounded-4">
     <h2 class="mt-4 mb-4">Registro de Empleados</h2>
     <form [formgroup]="registerForm">
+      {{nameField.value}}
       <div class="form-group p-2">
         <label for="name">Nombre:</label>
         <input type="text" class="form-control" id="name" formControlName="name" 
-        placeholder="Ingrese su name">
+        placeholder="Ingrese su nombre">
       </div>
       <div class="form-group p-2">
         <label for="lastName">Apellido:</label>
         <input type="text" class="form-control" id="lastName" formControlName="lastName"
-          placeholder="Ingrese su lastName">
+          placeholder="Ingrese su apellido">
       </div>
       <div class="form-group p-2">
         <label for="email">Correo Electrónico:</label>
@@ -37,16 +38,18 @@
       <div class="form-group p-2">
         <label>Recibir notificación de ofertas</label>
         <div>
-          <input type="radio" id="notifyOfferSi" value="true" formControlName="notifyOffer"> 
+          <input type="radio" id="notifyOfferSi" value="true" formControlName="notifyOffer" name="notifyOffer"
+          class="form-check-input"> 
           <label for="notifyOfferSi">Sí</label>
         </div>
         <div>
-          <input type="radio" id="notifyOfferNo" value="false" formControlName="notifyOffer"> 
+          <input type="radio" id="notifyOfferNo" value="false" formControlName="notifyOffer" name="notifyOffer"
+          class="form-check-input"> 
           <label for="notifyOfferNo">No</label>
         </div>
       </div>
       <div class="d-flex justify-content-center pt-4">
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary" >Registrar</button>
       </div>
     </form>
   </div>
