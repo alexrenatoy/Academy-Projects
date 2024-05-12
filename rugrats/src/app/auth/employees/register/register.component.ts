@@ -19,13 +19,13 @@ export class RegisterComponent {
 
   get buildForm() {
     return this.formBuilder.group({
-      name: ['Andy', [ Validators.required,Validators.minLength(3) ]],
-      lastName: ['', [ Validators.required,Validators.minLength(3) ]],
-      email: ['', [ Validators.required,Validators.minLength(10) ]],
-      phone: [0, [ Validators.required,Validators.minLength(10) ]],
+      name: ['Andy', [ Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern('[a-zA-Z ]*') ]],
+      lastName: ['', [ Validators.required,Validators.minLength(3), Validators.maxLength(15),Validators.pattern('[a-zA-Z ]*') ]],
+      email: ['', [ Validators.required,Validators.minLength(10),Validators.maxLength(35),Validators.email ]],
+      phone: [null, [ Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern('^[0-9]*$') ]],
       birthdate: [new Date(), [ Validators.required ]],
       gender: ['', [ Validators.required]],
-      notifyOffer: [null, [ Validators.required]],    
+      notifyOffer: [false, [ Validators.requiredTrue]],    
     });
   }
 
@@ -49,9 +49,17 @@ export class RegisterComponent {
     return this.registerForm.controls['gender'];
   };
   get notifyOfferField(): AbstractControl {
+    
     return this.registerForm.controls['notifyOffer'];
   };
 
-
+  validateForm(){
+    if (this.registerForm.valid){
+      for (let item of Object.values(this.registerForm.controls))
+          console.log(item.value)
+    }else {
+      alert('Error al registrarte')
+    }
+  }
 }
 

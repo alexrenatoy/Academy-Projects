@@ -1,39 +1,105 @@
 <div class="col-6 position-absolute top-50 start-50 translate-middle">
   <div class="border border-dark-subtle p-4 rounded-4">
     <h2 class="mt-4 mb-4">Registro de Empleados</h2>
-    <form [formgroup]="registerForm">
+    <form [formGroup]="registerForm">
       {{nameField.value}}
       <div class="form-group p-2">
         <label for="name">Nombre:</label>
         <input type="text" class="form-control" id="name" formControlName="name" 
         placeholder="Ingrese su nombre">
+        @if (nameField.errors && nameField.dirty) {
+          @if (nameField.errors['required']) {
+            <span>El campo es obligatorio!!</span>
+          }
+          @else if (nameField.errors['minlength']) {
+            <span>El campo debe tener mínimo 3 letras</span>
+          }
+          @else if (nameField.errors['maxlength']) {
+            <span>El campo debe tener máximo 15 letras</span>
+          }
+          @else if (nameField.errors['pattern']) {
+            <span>El campo debe tener mínimo 3 letras</span>
+          }
+        }else 
       </div>
       <div class="form-group p-2">
         <label for="lastName">Apellido:</label>
         <input type="text" class="form-control" id="lastName" formControlName="lastName"
           placeholder="Ingrese su apellido">
+          @if (lastNameField.errors && lastNameField.dirty) {
+            @if (lastNameField.errors['required']) {
+              <span>El campo es obligatorio!!</span>
+            }
+            @else if (lastNameField.errors['pattern']) {
+              <span>El campo debe tener solo carácteres válidos</span>
+            }
+            @else if (lastNameField.errors['maxlength']) {
+              <span>El campo debe tener máximo 15 letras</span>
+            }
+            @else if (lastNameField.errors['minlength']) {
+              <span>El campo debe tener mínimo 3 letras</span>
+            }
+          }
       </div>
       <div class="form-group p-2">
         <label for="email">Correo Electrónico:</label>
         <input type="email" class="form-control" id="email" formControlName="email"
           placeholder="Ingrese su correo electrónico">
+          @if (emailField.errors && emailField.dirty) {
+            @if (emailField.errors['required']) {
+              <span>El campo es obligatorio!!</span>
+            }
+            @else if (emailField.errors['minlength']) {
+              <span>El campo debe ser un correo válido</span>
+            }
+            @else if (emailField.errors['maxlength']) {
+              <span>Excediste el límite de carácteres</span>
+            }
+            @else if (emailField.errors['email']) {
+              <span>El campo debe ser un correo válido</span>
+            }        
+          }
       </div>
       <div class="form-group p-2">
         <label for="phone">Teléfono:</label>
         <input type="number" class="form-control" id="phone" formControlName="phone"
           placeholder="Ingrese su número de teléfono">
+          @if (phoneField.errors && phoneField.dirty) {
+            @if (phoneField.errors['required']) {
+              <span>El campo es obligatorio!!</span>
+            }
+            @else if (phoneField.errors['minlength']) {
+              <span>El campo debe tener mínimo 3 dígitos</span>
+            }
+            @else if (phoneField.errors['maxlength']) {
+              <span>El campo debe tener máximo 10 dígitos</span>
+            }
+            @else if (phoneField.errors['pattern']) {
+              <span>El campo debe tener solo carácteres válidos</span>
+            }
+          }
       </div>
       <div class="form-group p-2">
         <label for="birthdate">Fecha de Nacimiento:</label>
-        <input type="date" class="form-control" id="birthdate">
+        <input type="date" class="form-control" id="birthdate" formControlName="birthdate">
+        @if (birthdateField.errors && birthdateField.dirty) {
+          @if (birthdateField.errors['required']) {
+            <span>El campo es obligatorio</span>
+          }
+        }
       </div>
       <div class="form-group p-2">
         <label for="gender">Género:</label>
-        <select class="form-control" id="gender">
+        <select class="form-control" id="gender" formControlName="gender">
           <option value="">Seleccionar</option>
           <option value="masculino">Masculino</option>
           <option value="femenino">Femenino</option>          
         </select>
+        @if (genderField.errors && genderField.dirty) {
+          @if (genderField.errors['required']) {
+            <span>El campo es obligatorio</span>
+          }
+        }
       </div>
       <div class="form-group p-2">
         <label>Recibir notificación de ofertas</label>
@@ -47,9 +113,14 @@
           class="form-check-input"> 
           <label for="notifyOfferNo">No</label>
         </div>
+        @if (notifyOfferField.touched && notifyOfferField.errors ) {
+          @if (notifyOfferField.errors['requiredTrue']) {
+            <span>El campo es obligatorio aceptar</span>
+          }
+        }
       </div>
       <div class="d-flex justify-content-center pt-4">
-        <button type="submit" class="btn btn-primary" >Registrar</button>
+        <button type="submit" class="btn btn-primary" (click)="validateForm()">Registrar</button>
       </div>
     </form>
   </div>
