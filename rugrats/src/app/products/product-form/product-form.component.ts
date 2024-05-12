@@ -17,12 +17,12 @@ export class ProductFormComponent {
     }
         get builForm(): FormGroup{
           return this.formBuilder.group({
-            name: ['', Validators.required],
+            name: ['',[ Validators.required, Validators.minLength(5)]],
             date: [new Date(), [Validators.required]],
-            description:['', Validators.required, Validators.minLength(30)],
-            color:['', Validators.required, Validators.maxLength(10)],
-            price: [0, Validators.required],
-            availability: [false]
+            description:['', [Validators.required, Validators.minLength(10)]],
+            color:['', [Validators.required, Validators.maxLength(8)]],
+            price: [0, [Validators.required]],
+            availability: [false, [Validators.required]]
           });
         }
 

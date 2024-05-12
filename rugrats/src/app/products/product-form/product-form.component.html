@@ -5,12 +5,30 @@
 <body style="background-color: rgb(23, 23, 23);">
 <form [formGroup]="form" class="column is-one-third is-mobile" style="margin-left: 500px; border: 0.4px solid white; padding: 30px; border-radius: 20px;">
   <h1 style="font-size: 30px; text-align: center;">Formulario</h1>
+
+
   <div class="field">
     <label class="label">Nombre</label>
     <div class="control">
       <input class="input is-rounded bi bi-pen" type="text" placeholder="Ingresa el nombre de la prenda" formControlName = 'name'>
     </div>
   </div>
+  
+  @if (name.errors){
+    @if (name.touched) {
+      @if (name.errors['required']) {
+        <div class="alert alert-danger" role="alert">
+          El campo es requerido
+        </div>
+      }
+      @if(name.errors['minlength']) {
+        <div class="alert alert-warning" role="alert">
+          Este campo debe contener al menos 5 caracteres
+        </div>
+      }
+    }
+  }
+
   <label class="label">Imagen</label>
   <div class="file has-name">
     <label class="file-label">
@@ -24,31 +42,85 @@
       <span class="file-name">Nombre Imagen</span>
     </label>
   </div>
+
+
   <div class="field">
     <label class="label">Descripcion</label>
     <div class="control">
       <input class="input is-rounded" type="text" placeholder="Escribe una descripcion" formControlName = 'description'>
     </div>
   </div>
+  
+  @if (description.errors){
+    @if (description.touched) {
+      @if (description.errors['required']) {
+        <div class="alert alert-danger" role="alert">
+          El campo es requerido
+        </div>
+      }
+      @if(description.errors['minlength']) {
+        <div class="alert alert-warning" role="alert">
+          Este campo debe contener al menos 10 caracteres
+        </div>
+      }
+    }
+  }
+
   <div class="field">
     <label class="label">Color</label>
     <div class="control">
       <input class="input is-rounded" type="text" placeholder="Ingresa el color de la prenda" formControlName = 'color'>
     </div>
   </div>
+  
+  @if (color.errors){
+    @if (color.touched) {
+      @if (color.errors['required']) {
+        <div class="alert alert-danger" role="alert">
+          El campo es requerido
+        </div>
+      }
+      @if(color.errors['maxlength']) {
+        <div class="alert alert-warning" role="alert">
+          Este campo debe contener maximo 8 caracteres
+        </div>
+      }
+    }
+  }
+
   <div class="field">
-    <label class="label">Color</label>
+    <label class="label">Precio</label>
     <div class="control">
-      <input class="input is-rounded" type="number" placeholder="Ingresa el color de la prenda" formControlName = 'price'>
+      <input class="input is-rounded" type="number"  formControlName = 'price'>
     </div>
   </div>
+  
+  @if (price.errors){
+    @if (price.touched) {
+      @if (price.errors['required']) {
+        <div class="alert alert-danger" role="alert">
+          El campo es requerido
+        </div>
+      }
+    }
+  }
+
   <div class="field">
     <label class="label">Fecha de Envio</label>
     <div class="control">
       <input class="input is-rounded" type="date" placeholder="Escribe una descripcion" formControlName = 'date'>
     </div>
   </div>
-  
+  @if (date.touched) {
+    @if (date.errors){
+      @if (date.errors['required']) {
+        <div class="alert alert-danger" role="alert">
+          El campo es requerido
+        </div>
+      }
+    }
+  }
+
   <div class="field">
     <label class="label">Categoria</label>
     <div class="control">
@@ -62,6 +134,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="field">
     <label class="label">Esta disponible?</label>
     <div class="control">
@@ -76,9 +150,22 @@
     </div>
   </div>
 
+  @if (availability.touched) {
+    @if (availability.errors){
+      @if (availability.errors['required']) {
+        <div class="alert alert-danger" role="alert">
+          El campo es requerido
+        </div>
+      }
+    }
+  }
+  
+  
+
+
   <div class="field is-grouped" style="margin-left: 140px;">
     <div class="control">
-      <button class="button is-info is-dark">Guardar</button>
+      <button class="button is-warningo is-dark">Guardar</button>
     </div>
     <div class="control">
       <button class="button is-danger is-dark">Cancelar</button>
