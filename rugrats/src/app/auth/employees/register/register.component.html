@@ -1,8 +1,7 @@
-<div class="col-6 position-absolute top-50 start-50 translate-middle">
-  <div class="border border-dark-subtle p-4 rounded-4">
-    <h2 class="mt-4 mb-4">Registro de Empleados</h2>
+<div class="col-4 position-absolute top-50 start-50 translate-middle">
+  <div class="shadow bg-body-tertiary rounded p-4 bg-dark-subtle">
+    <h2 class="mt-4 mb-4 text-center ">Registro de Empleados</h2>
     <form [formGroup]="registerForm">
-      {{nameField.value}}
       <div class="form-group p-2">
         <label for="name">Nombre:</label>
         <input type="text" class="form-control" id="name" formControlName="name" 
@@ -20,7 +19,7 @@
           @else if (nameField.errors['pattern']) {
             <span>El campo debe tener mínimo 3 letras</span>
           }
-        }else 
+        }
       </div>
       <div class="form-group p-2">
         <label for="lastName">Apellido:</label>
@@ -62,20 +61,20 @@
       </div>
       <div class="form-group p-2">
         <label for="phone">Teléfono:</label>
-        <input type="number" class="form-control" id="phone" formControlName="phone"
+        <input type="tel" class="form-control" id="phone" formControlName="phone"
           placeholder="Ingrese su número de teléfono">
           @if (phoneField.errors && phoneField.dirty) {
             @if (phoneField.errors['required']) {
               <span>El campo es obligatorio!!</span>
             }
+            @else if (phoneField.errors['pattern']) {
+              <span>El campo debe tener solo números</span>
+            }
             @else if (phoneField.errors['minlength']) {
-              <span>El campo debe tener mínimo 3 dígitos</span>
+              <span>El campo debe tener mínimo 9 dígitos</span>
             }
             @else if (phoneField.errors['maxlength']) {
               <span>El campo debe tener máximo 10 dígitos</span>
-            }
-            @else if (phoneField.errors['pattern']) {
-              <span>El campo debe tener solo carácteres válidos</span>
             }
           }
       </div>
@@ -102,25 +101,19 @@
         }
       </div>
       <div class="form-group p-2">
-        <label>Recibir notificación de ofertas</label>
-        <div>
-          <input type="radio" id="notifyOfferSi" value="true" formControlName="notifyOffer" name="notifyOffer"
-          class="form-check-input"> 
-          <label for="notifyOfferSi">Sí</label>
-        </div>
-        <div>
-          <input type="radio" id="notifyOfferNo" value="false" formControlName="notifyOffer" name="notifyOffer"
-          class="form-check-input"> 
-          <label for="notifyOfferNo">No</label>
-        </div>
-        @if (notifyOfferField.touched && notifyOfferField.errors ) {
-          @if (notifyOfferField.errors['requiredTrue']) {
-            <span>El campo es obligatorio aceptar</span>
+        <h6>¿Recibir ofertas de descuentos a empleados?</h6>
+        <label class="switch">       
+          <input type="checkbox" formControlName="notifyOffer"> 
+          <span class="slider"></span>       
+      </label>
+        @if (notifyOfferField.errors && notifyOfferField.touched) {
+          @if (notifyOfferField.errors['required']) {
+            <span>Debe aceptar para continuar</span>
           }
         }
       </div>
       <div class="d-flex justify-content-center pt-4">
-        <button type="submit" class="btn btn-primary" (click)="validateForm()">Registrar</button>
+        <button type="submit" class="btn btn-success" (click)="validateForm()">Registrar</button>
       </div>
     </form>
   </div>
