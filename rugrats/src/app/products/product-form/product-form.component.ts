@@ -1,21 +1,24 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnInit {
 
   private formBuilder: FormBuilder = inject(FormBuilder);
 
     protected form: FormGroup;
+    data: any;
 
-    constructor() {
-      this.form = this.builForm
+    constructor(private authService: AuthService) {
+      this.form = this.builForm();
     }
-        get builForm(): FormGroup{
+  
+        builForm(): FormGroup{
           return this.formBuilder.group({
             name: ['',[ Validators.required, Validators.minLength(5)]],
             date: [new Date(), [Validators.required]],
@@ -24,6 +27,14 @@ export class ProductFormComponent {
             price: [0, [Validators.required]],
             availability: [false, [Validators.required]]
           });
+        }
+
+
+        ngOnInit(): void {
+          this.data = this.authService.getData();
+    if (this.data) {
+      this.form.patchValue(this.data);
+    }
         }
 
         get name(): AbstractControl{
